@@ -7,13 +7,27 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "css:watch": "run-p build:css:watch lint:css:watch",
+    "build:css": "postcss -c options.json",
+    "build:css:watch": "postcss -c options.json -w src/*.css",
+    "lint:css": "stylelint dist/*.css",
+    "lint:css:watch": "chokidar 'dist/*.css' -c 'stylelint dist/*.css'"
   },
   "keywords": [],
   "author": "yhorie <yuk.horie@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.4.1",
-    "postcss-cli": "^2.6.0"
+    "chokidar-cli": "^1.2.0",
+    "npm-run-all": "^3.1.0",
+    "postcss-cli": "^2.6.0",
+    "postcss-custom-properties": "^5.0.1",
+    "postcss-import": "^8.1.2",
+    "postcss-nested": "^1.0.0",
+    "stylelint": "^7.3.1",
+    "stylelint-config-standard": "^13.0.2"
+  },
+  "dependencies": {
+    "normalize.css": "^4.2.0"
   }
 }
